@@ -1,0 +1,2 @@
+#!/bin/sh
+ruby cli/p2p.rb $1 $2 $3 $4 $5
