@@ -5,13 +5,13 @@ require 'io/console'
 class P2PServersUtilities
 
     def add_wizard
-        print "Enter server hostname (e.g 45.67.89.67 or server.domain.com) >>> "
+        print "Enter server hostname (e.g 45.67.89.67, server.domain.com) >>> "
         hostname = $stdin.gets
 
         print "Enter server ssh port (provide 22 if you don't know) >>> "
         port = $stdin.gets
 
-        print "Enter user for distant server (e.g user or root) >>> "
+        print "Enter user for distant server (e.g user, root) >>> "
         user = $stdin.gets
 
         print "Copy keys (don't type the password at each connection) (y/n) >>> "
@@ -28,10 +28,11 @@ class P2PServersUtilities
                 puts "Host cannot be accessible thru ssh. Please make sure a ssh server is running on %d%d ❌" % [user, hostname]
                 exit(-1)
             else
-            puts "Try to login without password"
-            host = P2PNet::Host.new(user, host, port)
-            host.test()
-            exit
+                puts "Try to login without password"
+                host = P2PNet::Host.new(user, host, port)
+                host.test()
+                exit
+            end
         else
             puts "To verify if distant host is ready, please enter your password."
             password = IO::console.getpass "%d@%d password: " % [user, hostname]

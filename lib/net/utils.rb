@@ -34,6 +34,7 @@ module P2PNet
                 ssh = Net::SSH.start(@user, @host, port: @port, password: @password)
             else
                 ssh = Net::SSH.start(@user, @host, port: @port)
+            end
             commands.each do command 
                 ssh.exec!(command)
             end
