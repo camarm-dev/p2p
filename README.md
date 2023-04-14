@@ -16,22 +16,22 @@ And your app is now running on your distant host !
 ## Install
 
 ```shell
-curl https://github.com/camarm-dev/p2p/tree/main/install.sh?raw=true sh
+curl https://github.com/camarm-dev/p2p/tree/main/install.sh?raw=true | sudo sh
 ```
 And follow the wizard...
 
 ## Add an host
 ```shell
-p2p server add
+p2p servers add
 ```
 Follow the wizard...
 
 ## Write a configuration file
 ```ini
-P2P
+[P2P]
 server=server-name
 copy=config.ini,app/,run.sh
 execute=run.sh
-CLI
+[CLI]
 verbose=false
 ```
