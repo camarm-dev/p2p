@@ -16,7 +16,7 @@ And your app is now running on your distant host !
 ## Install
 
 ```shell
-curl https://github.com/camarm-dev/p2p/tree/main/install.sh?raw=true | sudo sh
+curl https://raw.githubusercontent.com/camarm-dev/p2p/main/install.sh | sudo sh
 ```
 And follow the wizard...
 
