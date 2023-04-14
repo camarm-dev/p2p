@@ -4,7 +4,7 @@ if [ "$(whoami)" = "root" ]; then
   curl https://github.com/releases/lastest/ -o /usr/bin/p2p
   chmod +x /usr/bin/p2p
   echo "Creating data folder ~/.p2p"
-  mkdri -p ~/.p2p
+  mkdir -p ~/.p2p
   echo "Writting default configuration"
   curl https://raw.githubusercontent.com/camarm-dev/p2p/main/config.default.json > ~/.p2p/config.json
   echo "Running p2p info"
