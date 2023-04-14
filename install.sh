@@ -8,5 +8,5 @@ if [ "$(whoami)" = "root" ]; then
   echo "The p2p executable is installed !"
 else
   echo "Run this as root"
-  exit -1
+  exit 255
 fi
