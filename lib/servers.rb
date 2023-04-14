@@ -23,7 +23,7 @@ class P2PServersUtilities
 
         if copy.downcase == "y"
             puts "\e[A\e[KCopying keys, your password will be asked:"
-            success = system("ssh-copy-id #{user}#{hostname} -p #{port}"
+            success = system("ssh-copy-id #{user}#{hostname} -p #{port}")
             if success in [false, nil]
                 puts "Host cannot be accessible thru ssh. Please make sure a ssh server is running on #{user}@#{hostname} ❌"
                 exit(-1)
