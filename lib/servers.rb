@@ -23,9 +23,9 @@ class P2PServersUtilities
 
         if copy.downcase == "y"
             puts "\e[A\e[KCopying keys, your password will be asked:"
-            success = system("ssh-copy-id %d@%d -p %d" % [user, hostname, port])
+            success = system("ssh-copy-id #{user}#{hostname} -p #{port}"
             if success in [false, nil]
-                puts "Host cannot be accessible thru ssh. Please make sure a ssh server is running on %d%d ❌" % [user, hostname]
+                puts "Host cannot be accessible thru ssh. Please make sure a ssh server is running on #{user}@#{hostname} ❌"
                 exit(-1)
             else
                 puts "Trying to login without password..."
@@ -35,7 +35,7 @@ class P2PServersUtilities
             end
         else
             puts "\e[A\e[KTo verify if distant host is ready, please enter your password."
-            password = IO::console.getpass "%d@%d password: " % [user, hostname]
+            password = IO::console.getpass "#{user}@#{hostname} password: "
             host = P2PNet::Host.new(user, host, port, password)
             host.test()
             exit
