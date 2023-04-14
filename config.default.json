@@ -1,0 +1,7 @@
+{
+  "folder": "~/.p2p",
+  "webui": {
+    "enabled": false,
+    "port": "16216"
+  }
+}
