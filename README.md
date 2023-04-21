@@ -50,11 +50,16 @@ It only have 4 instruction possible:
 `COMMAND`: Execute a shell command on the remote host.
 
 ```
-DEST prod-srv
+DEST frontend-srv
 CTX /home/user/website
 COPY config.ini,build.sh,run.sh,app/
 COMMAND sh build.sh
 COMMAND sh run.sh
+DEST backend-srv
+CTX /usr/backend
+COPY config.ini,backend.sh
+COMMAND sh backend.sh
+
 ```
 And boom !
 
