@@ -21,7 +21,7 @@ module Program
         server = SERVERS.get(arg)
         @host = P2PNet::Host.new(server['user'], server['hostname'], server['port'], server['require_password'])
       elsif line.start_with?("COPY")
-        args = line.tr("COPY ", "").split(',')
+        args = line.gsub("COPY ", "").split(',')
         current_dir = @host.call('pwd').tr("\n", "")
         puts "Copying #{args.join(',')}"
         @host.upload(args, current_dir)
@@ -31,7 +31,7 @@ module Program
         out = @host.call(arg)
         puts "\t-> #{out}"
       elsif line.start_with?("CTX")
-        arg = line.tr("CTX ", "")
+        arg = line.gsub("CTX ", "")
         puts "Moving to #{arg}"
         @host.exec(["cd #{arg}"])
       else
