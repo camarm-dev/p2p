@@ -34,7 +34,7 @@ if [ "$(whoami)" = "root" ]; then
   echo "Installing p2p libraries in /usr/lib"
   curl https://raw.githubusercontent.com/camarm-dev/p2p/main/packed/p2p-libs.tar.gz -s -o libs.tar.gz
   tar -xzvf libs.tar.gz -C /usr/lib/p2p
-  rm libs/tar.gz
+  rm libs.tar.gz
   echo "Creating data folder ~/.p2p"
   su $USER -c 'mkdir -p ~/.p2p'
   echo "Writing default configuration"
