@@ -9,5 +9,7 @@ cp cli -r packed/p2p-libs
 echo "Replacing import paths"
 ruby scripts/utils/full-path.rb packed/p2p-libs
 echo "Making a tarball of p2p-libs"
-tar -czvf packed/p2p-libs.tar.gz packed/p2p-libs
+cd packed/p2p-libs
+tar -czvf ../p2p-libs.tar.gz cli lib
+cd ../..
 echo "Done."
