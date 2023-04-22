@@ -7,5 +7,5 @@ echo "Copying libs and utils"
 cp lib -r packed/p2p-libs
 cp cli -r packed/p2p-libs
 echo "Making a tarball of p2p-libs"
-tar -czvf p2p-libs.tar.gz packed/p2p-libs
+tar -czvf packed/p2p-libs.tar.gz packed/p2p-libs
 echo "Done."
