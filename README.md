@@ -26,6 +26,8 @@ And your app is now running on your distant host !
 You need
 - openssh (clients & server)
 - ping
+- tar
+- ruby
 
 ```shell
 wget https://raw.githubusercontent.com/camarm-dev/p2p/main/install.sh | sudo sh
@@ -83,8 +85,14 @@ sh config.sh
 `cli/` -> The thor cli classes.
 `scripts/` -> Useful script to build of configure p2p
 
-### Compile
-Not yet
+### Pack
+Pack p2p is simply moving all ressources to the folder `packed/` and prepare them to be installed.
+Committing a pack to the main branch is uploading a new version of p2p !
+To install the packed package locally for developpement test you can use
+```shell
+sudo sh scripts/install-packed.sh
+```
+This will install p2p with the latest local pack.
 
 ## P2P Webui
 P2P webui is another part of the p2p project. It's an experimental web interface where you can debug and view your p2p deployements !
