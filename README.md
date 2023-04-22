@@ -2,12 +2,13 @@
 Push 2 prod: the easiest and modern way to push any apps to production in one command.
 
 ## Table of content
-- What does p2p ?
-- Documentation
-  - Install
-  - Add an host
-  - Write a configuration file
-- P2P Webui ?
+- [What does p2p ?](#what-does-p2p-)
+- [Documentation](#documentation)
+  - [Install](#install)
+  - [Add an host](#add-an-host)
+  - [Write a configuration file](#write-a-configuration--p2p--file)
+  - [Develop on p2p](#develop-on-p2p)
+- [P2P Webui ?](#p2p-webui)
 
 ## What does p2p ?
 P2p is a command line tool written in ruby that push any apps to production with a single configuration file and in one command.
@@ -62,6 +63,28 @@ COMMAND sh backend.sh
 
 ```
 And boom !
+
+## Develop on p2p
+
+- Ruby is required
+- Gem and bundle are required
+1. Install gems 
+```shell
+bundle install
+```
+2. Configure p2p
+```shell
+sh config.sh
+```
+3. (Optional) Install rubyc to compile p2p from [ruby-packer](https://github.com/pmq20/ruby-packer/releases )
+
+### Folders
+`lib/` -> The p2p libraries, to use ssh or to store datas...
+`cli/` -> The thor cli classes.
+`scripts/` -> Useful script to build of configure p2p
+
+### Compile
+Not yet
 
 ## P2P Webui
 P2P webui is another part of the p2p project. It's an experimental web interface where you can debug and view your p2p deployements !
