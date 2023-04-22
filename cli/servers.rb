@@ -15,7 +15,7 @@ class Servers < Thor
     > $ p2p servers add
   LONGDESC
   def add
-    puts "\e[1mComplete the following wizard to add a p2p server:\e[0m"
+    puts "\e[1m\e[4mComplete the following wizard to add a p2p server:\e[0m"
     SERVERS.add_wizard
   end
   
@@ -35,7 +35,7 @@ class Servers < Thor
       puts "#{server['name']}#{space}-\t#{server['user']}@#{server['hostname']}"
     end
 
-    puts "\n#{servers.length} servers - p2p #{CONFIG["version"]}"
+    puts "\e[2m#{servers.length} servers - p2p #{CONFIG["version"]}\e[0m"
 
   end
 
@@ -49,13 +49,13 @@ class Servers < Thor
     server = SERVERS.remove(name)
 
     if server == nil
-      puts "Cannot find server '#{name}' ❌"
+      puts "\e[31mCannot find server '#{name}' ❌\e[0m"
       exit
     end
 
-    puts "Server successfully deleted ✅"
+    puts "\e[32mServer successfully deleted ✅\e[0m"
 
-    puts "\nserver '#{name}' - p2p #{CONFIG["version"]}"
+    puts "\e[2mserver '#{name}' - p2p #{CONFIG["version"]}\e[0m"
   end
 
   desc "spec [server-name]", "Get a p2p server spec."
@@ -70,7 +70,7 @@ class Servers < Thor
     puts "\e[1mSpecs of '#{name}':\e[0m"
 
     if server == nil
-      puts "Cannot find server '#{name}' ❌"
+      puts "\e[31mCannot find server '#{name}' ❌\e[0m"
       exit
     end
 
@@ -78,7 +78,7 @@ class Servers < Thor
       puts "#{key}:  #{' ' * (@@max_key_len - key.length)}#{server[key]}"
     end
 
-    puts "\nserver '#{name}' - p2p #{CONFIG["version"]}"
+    puts "\e[2mserver '#{name}' - p2p #{CONFIG["version"]}\e[0m"
   end
   
   desc "test [server-name]", "Test a p2p server connectivity."
@@ -93,20 +93,20 @@ class Servers < Thor
     puts "\e[1mTesting '#{name}':\e[0m"
 
     if server == nil
-      puts "Cannot find server '#{name}' ❌"
+      puts "\e[31mCannot find server '#{name}' ❌\e[0m"
       exit
     end
 
     begin
       host = P2PNet::Host.new(server['user'], server['hostname'], server['port'], server['require_password'])
       if host.test
-        puts "Server '#{name}' has been tested successfully. ✅"
+        puts "\e[32mServer '#{name}' has been tested successfully. ✅\e[0m"
       end
     rescue
-      puts "Failed to connect to the server '#{name}' ❌"
+      puts "\e[31mFailed to connect to the server '#{name}' ❌\e[0m"
     end
 
 
-    puts "\nserver '#{name}' - p2p #{CONFIG["version"]}"
+    puts "\e[2mserver '#{name}' - p2p #{CONFIG["version"]}\e[0m"
   end
 end

@@ -9,7 +9,7 @@ module Program
     lines = content.split("\n")
 
     unless lines[0].start_with?("DIST")
-      puts "First line must set the distant host with DIST keyword ! ❌"
+      puts "\e[31mFirst line must set the distant host with DIST keyword ! ❌\e[0m"
       exit
     end
 
@@ -41,7 +41,11 @@ module Program
   end
 
   def self.run(file)
-    eval(File.read(file))
+    begin
+      eval(File.read(file))
+    rescue
+      puts "\e[31mFile not found or error occurred ❌\e[0m"
+    end
   end
 
 end

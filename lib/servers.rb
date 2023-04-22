@@ -31,13 +31,13 @@ class P2PServersUtilities
             puts "\e[A\e[KCopying keys, your password will be asked:"
             success = system("ssh-copy-id -p #{port} #{user}@#{hostname}")
             if success == false || success == nil
-                puts "Host cannot be accessible thru ssh. Please make sure a ssh server is running on #{user}@#{hostname} ❌"
+                puts "\e[31mHost cannot be accessible thru ssh. Please make sure a ssh server is running on #{user}@#{hostname} ❌\e[0m"
                 exit(-1)
             else
                 puts "Trying to login without password..."
                 host = P2PNet::Host.new(user, hostname, port)
                 unless host.test
-                    puts "\e[A\e[KFailed, please make sure you provided the correct values. ❌"
+                    puts "\e[A\e[K\e[31mFailed, please make sure you provided the correct values. ❌\e[0m"
                     exit
                 end
             end
@@ -45,7 +45,7 @@ class P2PServersUtilities
             puts "\e[A\e[KTo verify if distant host is ready, please enter your password."
             host = P2PNet::Host.new(user, hostname, port, password=true)
             unless host.test
-                puts "\e[A\e[KFailed, please make sure you provided the correct values. ❌"
+                puts "\e[A\e[K\e[31mFailed, please make sure you provided the correct values. ❌\e[0m"
                 exit
             end
         end
@@ -61,7 +61,7 @@ class P2PServersUtilities
         }
 
         Storage.write(servers, "servers")
-        puts "\e[A\e[K\e[A\e[K\e[A\e[K\e[A\e[K\e[A\e[K\e[A\e[KServer successfully added. ✅"
+        puts "\e[A\e[K\e[A\e[K\e[A\e[K\e[A\e[K\e[A\e[K\e[A\e[K\e[32mServer successfully added. ✅\e[0m"
     end
 
     def list

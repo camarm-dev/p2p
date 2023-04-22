@@ -20,6 +20,8 @@ class P2P < Thor
   option :file, :default => ".p2p"
   def exec
     Program.run(options[:file])
+    current_directory = `pwd`.tr("\n", "")
+    puts "\e[2m#{current_directory} - p2p #{CONFIG["version"]}\e[0m"
   end
 
   desc "info", "Test your current p2p installation."
@@ -34,7 +36,7 @@ class P2P < Thor
   end
 
   def Thor.exit_on_failure?
-    puts "Fatal error ❌"
+    puts "\e[31mFatal error ❌\e[0m"
     exit 1
   end
 
