@@ -1,7 +1,14 @@
 DIST rpi
+# Set distant host
 CTX /home/robert
+# Moving to /home/robert folder
 COPY examples/main.py
+# Copy a python file
 COMMAND python3 main.py
+# Execute the python file thru the shell
+
 DIST pve
+# Connecting to another host
 CTX /root
 COMMAND whoami
+# Moving and executing 'whoami'
