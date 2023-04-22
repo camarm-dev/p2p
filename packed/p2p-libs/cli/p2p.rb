@@ -1,3 +1,4 @@
+$VERBOSE = nil
 require 'thor'
 require '/usr/lib/p2p/lib/storage/utils'
 require '/usr/lib/p2p/lib/eval/eval'
@@ -9,8 +10,8 @@ class P2P < Thor
   class_option :verbose, :type => :boolean, :aliases => "-v"
   desc "P2P Cli", "The easiest way to push to production any application in one command !"
 
-  map %w[--exec -e] => :exec
-  desc "--exec, -e", "Execute the .p2p file in the current directory."
+  map %w[--exec -e --push -p] => :exec
+  desc "--exec, -e, --push, -p", "Execute the .p2p file in the current directory."
   long_desc <<-LONGDESC
     `p2p` will execute the p2p program that is written in the .p2p file.
 
@@ -19,6 +20,8 @@ class P2P < Thor
   option :file, :default => ".p2p"
   def exec
     Program.run(options[:file])
+    current_directory = `pwd`.tr("\n", "")
+    puts "\e[2m#{current_directory} - p2p #{CONFIG["version"]}\e[0m"
   end
 
   desc "info", "Test your current p2p installation."
@@ -33,7 +36,7 @@ class P2P < Thor
   end
 
   def Thor.exit_on_failure?
-    puts "Fatal error ❌"
+    puts "\e[31mFatal error ❌\e[0m"
     exit 1
   end
 
