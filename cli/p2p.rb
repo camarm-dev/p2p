@@ -1,3 +1,4 @@
+$VERBOSE = nil
 require 'thor'
 require './lib/storage/utils'
 require './lib/eval/eval'
