@@ -30,7 +30,7 @@ You need
 - ruby
 
 ```shell
-wget https://raw.githubusercontent.com/camarm-dev/p2p/main/install.sh | sudo sh
+curl https://raw.githubusercontent.com/camarm-dev/p2p/main/install.sh | sudo sh
 ```
 
 ## Add an host
@@ -95,13 +95,21 @@ sudo sh scripts/install-packed.sh
 This will install p2p with the latest local pack.
 
 ## P2P Webui
-P2P webui is another part of the p2p project. It's an experimental web interface where you can debug and view your p2p deployements !
+Coming soon
 
-To install it run
-```shell
-wget https://raw.githubusercontent.com/camarm-dev/p2p/main/webui/install.sh | sudo sh
-```
+[//]: # (P2P webui is another part of the p2p project. It's an experimental web interface where you can debug and view your p2p deployements !)
 
-p2p-ui command will be installed... This command will be executed at each p2p deployement, and it will run a webserver to access a webui. Press `ctrl-c` to stop server.
+[//]: # ()
+[//]: # (To install it run)
 
-You can run it manually: `p2p-ui start [deployment-id: not required]`. Go to http://localhost:16216 and view all your previous deployments...
+[//]: # (```shell)
+
+[//]: # (curl https://raw.githubusercontent.com/camarm-dev/p2p/main/webui/install.sh | sudo sh)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (p2p-ui command will be installed... This command will be executed at each p2p deployment, and it will run a webserver to access a webui. Press `ctrl-c` to stop server.)
+
+[//]: # ()
+[//]: # (You can run it manually: `p2p-ui start [deployment-id: not required]`. Go to http://localhost:16216 and view all your previous deployments...)
