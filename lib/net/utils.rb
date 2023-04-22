@@ -4,24 +4,24 @@ require 'net/ping'
 module P2PNet
     class Host
         
-        def initialize(user, host, port, password=false)
+        def initialize(user, hostname, port, password=false)
             @user = user
-            @host = host
+            @host = hostname
             @port = port
             @required_password = password
             if password
-                @password = IO::console.getpass "%d@%d password: " % [user, hostname]
+                @password = IO::console.getpass "#{user}@#{hostname} password: "
             end
         end
 
         def test
-            if Net::Ping::External.new(hostname).ping
+            if Net::Ping::External.new(@host).ping
                 if @required_password
-                    Net::SSH.start(@user, @host, port: @port, password: @password) do |ssh| 
+                    Net::SSH.start(@host, @user, port: @port, password: @password) do |ssh| 
                         ssh.exec!("whoami")
                     end
                 else
-                    Net::SSH.start(@user, @host, port: @port) do |ssh| 
+                    Net::SSH.start(@host, @user, port: @port) do |ssh| 
                         ssh.exec!("whoami")
                     end
                 end
@@ -31,9 +31,9 @@ module P2PNet
 
         def exec(commands=[])
             if @required_password
-                ssh = Net::SSH.start(@user, @host, port: @port, password: @password)
+                ssh = Net::SSH.start(@host, @user, port: @port, password: @password)
             else
-                ssh = Net::SSH.start(@user, @host, port: @port)
+                ssh = Net::SSH.start(@host, @user, port: @port)
             end
             commands.each do command 
                 ssh.exec!(command)
