@@ -7,6 +7,20 @@ if [ "$(whoami)" = "root" ]; then
       exit
   fi
 
+  gem --version > /dev/null
+
+  if [ $? != 0 ]; then
+      echo "Please install gem"
+      exit
+  fi
+
+  bundle --version > /dev/null
+
+  if [ $? != 0 ]; then
+      echo "Please install bundler for gem"
+      exit
+  fi
+
   tar --version > /dev/null
 
   if [ $? != 0 ]; then
@@ -28,6 +42,10 @@ if [ "$(whoami)" = "root" ]; then
       exit
   fi
 
+  echo "Installing dependencies"
+  curl https://raw.githubusercontent.com/camarm-dev/p2p/main/Gemfile -s -o Gemfile
+  bundle install
+  rm Gemfile
   echo "Installing p2p in /usr/bin"
   curl https://raw.githubusercontent.com/camarm-dev/p2p/main/packed/p2p -s -o /usr/bin/p2p
   chmod +x /usr/bin/p2p
