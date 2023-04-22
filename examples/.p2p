@@ -1,0 +1,4 @@
+DIST rpi
+CTX /home/robert
+COPY examples/main.py
+COMMAND python3 main.py
