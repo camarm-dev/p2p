@@ -2,7 +2,7 @@ require './lib/net/utils'
 
 module Program
 
-  def eval(content)
+  def self.eval(content)
     lines = content.split("\n")
 
     lines.each do |command|
@@ -14,6 +14,8 @@ module Program
         host = P2PNet::Host.new(server['user'], server['hostname'], server['port'], server['require_password'])
       when "COPY"
         args = command.tr("COPY ", "").split(',')
+        current_dir = host.exec('pwd')
+        host.upload(args, current_dir)
       #   TODO: perform copy
       when "COMMAND"
         arg = command.tr("COMMAND ", "")
@@ -29,7 +31,7 @@ module Program
     end
   end
 
-  def run(file)
+  def self.run(file)
     eval(File.read(file))
   end
 
