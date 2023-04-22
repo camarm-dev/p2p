@@ -1,4 +1,5 @@
 require 'net/ssh'
+require 'net/scp'
 require 'net/ping'
 
 module P2PNet
@@ -36,20 +37,32 @@ module P2PNet
             else
                 ssh = Net::SSH.start(@host, @user, port: @port)
             end
+            outputs = []
             commands.each do |command|
-                ssh.exec!(command)
+                outputs << ssh.exec!(command)
             end
+            return outputs
         end
 
-        def upload(files=[], context='~')
+        def call(command)
             if @required_password
                 ssh = Net::SSH.start(@host, @user, port: @port, password: @password)
             else
                 ssh = Net::SSH.start(@host, @user, port: @port)
             end
+            return ssh.exec!(command)
+        end
+
+        def upload(files=[], context='~')
+            if @required_password
+                ssh = Net::SCP.start(@host, @user, port: @port, password: @password)
+            else
+                ssh = Net::SCP.start(@host, @user, port: @port)
+            end
             files.each do |file|
                 filename = file.split('/')[-1]
-                ssh.scp.upload(file, "#{context}/#{filename}")
+                p file
+                ssh.upload!(file, "#{context}/#{filename}")
             end
         end
     end
