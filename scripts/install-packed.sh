@@ -4,7 +4,8 @@ if [ "$(whoami)" = "root" ]; then
   cp packed/p2p /usr/bin/p2p
   chmod +x /usr/bin/p2p
   echo "Installing p2p libraries in /usr/lib"
-  cp -r packed/p2p-libs /usr/lib/p2p
+  mkdir -p /usr/lib/p2p
+  cp -r packed/p2p-libs/* /usr/lib/p2p
   echo "Creating data folder ~/.p2p"
   su $USER -c 'mkdir -p ~/.p2p'
   echo "Writing default configuration"
