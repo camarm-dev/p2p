@@ -16,7 +16,7 @@ It uses ssh and don't required any agent on the distant machine.
 
 1. Add the distant machine using p2p and give it a name.
 2. Write a config file named `.p2p` at your project root.
-3. Execute `p2p` at your project root.
+3. Execute `p2p -e` at your project root.
 
 And your app is now running on your distant host !
 
