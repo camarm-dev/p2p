@@ -87,6 +87,7 @@ sh config.sh
 
 ### Pack
 Pack p2p is simply moving all ressources to the folder `packed/` and prepare them to be installed.
+The `packed/` folder of the main branch is downloaded when p2p is installed !
 Committing a pack to the main branch is uploading a new version of p2p !
 To install the packed package locally for developpement test you can use
 ```shell

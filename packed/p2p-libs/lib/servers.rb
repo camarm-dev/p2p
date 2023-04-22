@@ -1,5 +1,5 @@
-require './lib/net/utils'
-require './lib/storage/utils'
+require '/usr/lib/p2p/lib/net/utils'
+require '/usr/lib/p2p/lib/storage/utils'
 require 'net/ping'
 require 'io/console'
 

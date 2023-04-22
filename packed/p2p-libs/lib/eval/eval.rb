@@ -1,10 +1,9 @@
-require './lib/net/utils'
+require '/usr/lib/p2p/lib/net/utils'
 
 module Program
 
   def self.eval(content)
     lines = content.split("\n")
-    context = ''
 
     lines.each do |command|
       host = P2PNet::Host

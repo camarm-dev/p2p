@@ -1,7 +1,7 @@
 require 'thor'
-require './lib/storage/utils'
-require './lib/eval/eval'
-require './cli/servers'
+require '/usr/lib/p2p/lib/storage/utils'
+require '/usr/lib/p2p/lib/eval/eval'
+require '/usr/lib/p2p/cli/servers'
 
 CONFIG = Storage::read('config')
 

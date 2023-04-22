@@ -1,6 +1,6 @@
 require 'thor'
-require './lib/servers'
-require './lib/net/utils'
+require '/usr/lib/p2p/lib/servers'
+require '/usr/lib/p2p/lib/net/utils'
 
 SERVERS = P2PServersUtilities.new()
 
