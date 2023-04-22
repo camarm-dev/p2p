@@ -76,9 +76,8 @@ bundle install
 ```
 2. Configure p2p
 ```shell
-sh config.sh
+sh scripts/config.sh
 ```
-3. (Optional) Install rubyc to compile p2p from [ruby-packer](https://github.com/pmq20/ruby-packer/releases )
 
 ### Folders
 `lib/` -> The p2p libraries, to use ssh or to store datas...
