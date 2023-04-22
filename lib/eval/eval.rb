@@ -34,6 +34,8 @@ module Program
         arg = line.gsub("CTX ", "")
         puts "\t- Moving to #{arg}"
         @host.exec(["cd #{arg}"])
+      elsif line.start_with?("#") || line == "\n" || line == ""
+        next
       else
         puts "\e[33mUnknown command at line #{lines.find_index(line)}.\e[0m"
       end
