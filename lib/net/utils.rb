@@ -9,6 +9,7 @@ module P2PNet
             @host = hostname
             @port = port
             @required_password = password
+            @conn = nil
             if password
                 @password = IO::console.getpass "#{user}@#{hostname} password: "
             end
@@ -35,8 +36,20 @@ module P2PNet
             else
                 ssh = Net::SSH.start(@host, @user, port: @port)
             end
-            commands.each do command 
+            commands.each do |command|
                 ssh.exec!(command)
+            end
+        end
+
+        def upload(files=[], context='~')
+            if @required_password
+                ssh = Net::SSH.start(@host, @user, port: @port, password: @password)
+            else
+                ssh = Net::SSH.start(@host, @user, port: @port)
+            end
+            files.each do |file|
+                filename = file.split('/')[-1]
+                ssh.scp.upload(file, "#{context}/#{filename}")
             end
         end
     end
