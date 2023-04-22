@@ -17,25 +17,27 @@ module Program
     lines.each do |line|
       if line.start_with?("DIST")
         arg = line.gsub("DIST ", "")
-        puts "Connecting to #{arg}"
+        puts "\e[1mConnecting to #{arg}...\e[0m"
         server = SERVERS.get(arg)
         @host = P2PNet::Host.new(server['user'], server['hostname'], server['port'], server['require_password'])
       elsif line.start_with?("COPY")
         args = line.gsub("COPY ", "").split(',')
         current_dir = @host.call('pwd').tr("\n", "")
-        puts "Copying #{args.join(',')}"
+        puts "\t- Copying #{args.join(',')}"
         @host.upload(args, current_dir)
       elsif line.start_with?("COMMAND")
         arg = line.gsub("COMMAND ", "")
-        puts "Executing $~ #{arg}"
+        puts "\t- Executing `#{arg}`"
         out = @host.call(arg)
-        puts "\t-> #{out}"
+        puts "\t\e[2m   -> #{out}\e[0m"
       elsif line.start_with?("CTX")
         arg = line.gsub("CTX ", "")
-        puts "Moving to #{arg}"
+        puts "\t- Moving to #{arg}"
         @host.exec(["cd #{arg}"])
+      elsif line.start_with?("#") || line == "\n" || line == ""
+        next
       else
-        puts "Unknown command at line #{lines.find_index(line)}."
+        puts "\e[33mUnknown command at line #{lines.find_index(line)}.\e[0m"
       end
     end
   end

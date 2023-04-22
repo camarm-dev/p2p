@@ -61,7 +61,6 @@ module P2PNet
             end
             files.each do |file|
                 filename = file.split('/')[-1]
-                p file
                 ssh.upload!(file, "#{context}/#{filename}")
             end
         end
