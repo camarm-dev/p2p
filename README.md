@@ -10,7 +10,7 @@ Push 2 prod: the easiest and modern way to push any apps to production in one co
 
 ## Table of content
 - [What does p2p ?](#what-does-p2p-)
-- [Documentation](/blob/main/DOCUMENTATION.md)
+- [Documentation](https://github.com/camarm-dev/p2p/blob/main/DOCUMENTATION.md)
 - [Acknowledgement](#acknowledgement)
 
 ## What does p2p ?
