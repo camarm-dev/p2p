@@ -1,6 +1,6 @@
 DIST rpi
 # Set distant host
-CTX /home/robert
+CTX /home/robert/Projects
 # Moving to /home/robert folder
 COPY examples/main.py
 # Copy a python file

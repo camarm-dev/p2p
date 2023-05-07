@@ -14,17 +14,18 @@ module Program
     end
 
     @host = P2PNet::Host
+    context = '/'
     lines.each do |line|
       if line.start_with?("DIST")
         arg = line.gsub("DIST ", "")
         puts "\e[1mConnecting to #{arg}...\e[0m"
         server = SERVERS.get(arg)
         @host = P2PNet::Host.new(server['user'], server['hostname'], server['port'], server['require_password'])
+        context = @host.call('pwd').tr("\n", "")
       elsif line.start_with?("COPY")
         args = line.gsub("COPY ", "").split(',')
-        current_dir = @host.call('pwd').tr("\n", "")
         puts "\t- Copying #{args.join(',')}"
-        @host.upload(args, current_dir)
+        @host.upload(args, context)
       elsif line.start_with?("COMMAND")
         arg = line.gsub("COMMAND ", "")
         puts "\t- Executing `#{arg}`"
@@ -34,6 +35,11 @@ module Program
         arg = line.gsub("CTX ", "")
         puts "\t- Moving to #{arg}"
         @host.exec(["cd #{arg}"])
+        if arg.start_with?("/")
+          context = arg
+        else
+          context += arg
+        end
       elsif line.start_with?("#") || line == "\n" || line == ""
         next
       else
