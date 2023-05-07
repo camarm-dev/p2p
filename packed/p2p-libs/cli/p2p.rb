@@ -33,6 +33,18 @@ class P2P < Thor
   def info
     puts "Installed path: #{__FILE__}"
     puts "Version: #{CONFIG["version"]}"
+    end
+
+  desc "update", "Update your current p2p installation."
+  long_desc <<-LONGDESC
+    `p2p update` will try to download the lastest p2p version.
+
+    > $ p2p update
+  LONGDESC
+  def update
+    puts "Running installation command..."
+    `curl https://raw.githubusercontent.com/camarm-dev/p2p/main/install.sh | sudo sh`
+    puts "P2P successfully updated ! Execute p2p info to see installed version"
   end
 
   def Thor.exit_on_failure?
