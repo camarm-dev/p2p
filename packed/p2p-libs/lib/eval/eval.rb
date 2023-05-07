@@ -29,7 +29,7 @@ module Program
       elsif line.start_with?("COMMAND")
         arg = line.gsub("COMMAND ", "")
         puts "\t- Executing `#{arg}`"
-        out = @host.call(arg)
+        out = @host.call("cd #{context} && #{arg}")
         puts "\t\e[2m   -> #{out}\e[0m"
       elsif line.start_with?("CTX")
         arg = line.gsub("CTX ", "")
