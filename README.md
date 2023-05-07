@@ -10,6 +10,7 @@ Push 2 prod: the easiest and modern way to push any apps to production in one co
 
 ## Table of content
 - [What does p2p ?](#what-does-p2p-)
+- [Install](#installation)
 - [Documentation](https://github.com/camarm-dev/p2p/blob/main/DOCUMENTATION.md)
 - [Acknowledgement](#acknowledgement)
 
@@ -22,6 +23,19 @@ It uses ssh and don't required any agent on the distant machine.
 3. Execute `p2p -e` at your project root.
 
 And your app is now running on your distant host !
+
+
+## Installation
+Requirements:
+- Ruby, gem and bundler
+- ping
+- openssh
+- scp
+- tar
+- curl
+```shell
+curl https://raw.githubusercontent.com/camarm-dev/p2p/main/install.sh | sudo sh
+```
 
 ## Acknowledgement
 - Rocket icon by [Etta](https://www.svgrepo.com/author/Etta/).
