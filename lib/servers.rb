@@ -93,16 +93,19 @@ class P2PServersUtilities
 
     def save_to_p2p(name)
         server = P2PServersUtilities.get(name)
-        puts "Connecting to #{name}... Type \"close\" to exit."
+        puts "Connecting to #{name}... Type \"close\" to exit and \"abort\" to abort."
         host = P2PNet::Host.new(server['user'], server['hostname'], server['port'], server['require_password'])
         commands = ["DIST #{name}"]
         context = host.call('pwd').tr("\n", "")
         while true
             user = host.call('whoami').tr("\n", "")
-            print "\e[0;32m#{user}@#{server['hostname']}\e[0m:\e[0;34m#{context} $\e[0m "
+            print "\e[32m#{user}@#{server['hostname']}\e[0m:\e[34m#{context} $\e[0m "
             command = $stdin.gets.tr("\n", "")
             if command == 'close'
                 break
+            elsif command == 'abort'
+                puts "\n\e[31mAborted ❌\e[0m"
+                puts "\e[2mserver '#{name}' - p2p #{CONFIG["version"]}\e[0m"
             elsif command.start_with?('cd')
                 arg = command.gsub('cd ', '')
                 if arg.start_with?('/')
