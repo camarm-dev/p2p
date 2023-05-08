@@ -219,7 +219,9 @@ The example file above will output something like [this](#--exec---push).
 
 This video explain line by line what the interpreter does:
 
-// TODO: make explanation video
+
+https://user-images.githubusercontent.com/77529508/236801291-eca23bac-28e0-401b-ad90-cc77f190a0f3.mp4
+
 
 ## Develop on p2p
 
