@@ -34,6 +34,7 @@ class P2P < Thor
   def info
     puts "Installed path: #{__FILE__}"
     puts "Version: #{CONFIG["version"]}"
+    puts "Changelog: #{CONFIG['changelog']}}"
     end
 
   desc "update", "Update your current p2p installation."
