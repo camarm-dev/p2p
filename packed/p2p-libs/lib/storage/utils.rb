@@ -15,7 +15,6 @@ module Storage
     end
 
     def self.write(data, name)
-        (name)
         File.write("#{FOLDER}/#{name}.json", JSON.dump(data))
     end
 

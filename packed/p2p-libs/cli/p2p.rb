@@ -2,6 +2,7 @@ $VERBOSE = nil
 require 'thor'
 require '/usr/lib/p2p/lib/storage/utils'
 require '/usr/lib/p2p/lib/eval/eval'
+require '/usr/lib/p2p/lib/servers'
 require '/usr/lib/p2p/cli/servers'
 
 CONFIG = Storage::read('config')
@@ -33,6 +34,7 @@ class P2P < Thor
   def info
     puts "Installed path: #{__FILE__}"
     puts "Version: #{CONFIG["version"]}"
+    puts "Changelog: #{CONFIG['changelog']}}"
     end
 
   desc "update", "Update your current p2p installation."
@@ -41,10 +43,26 @@ class P2P < Thor
 
     > $ p2p update
   LONGDESC
+  option :file, :default => ".p2p"
   def update
     puts "Running installation command..."
     `curl https://raw.githubusercontent.com/camarm-dev/p2p/main/install.sh | sudo sh`
     puts "P2P successfully updated ! Execute p2p info to see installed version"
+    end
+
+  desc "init", "Connect to a server and save commands as a p2p deployment."
+  long_desc <<-LONGDESC
+    `p2p init` will try to download the lastest p2p version.
+
+    > $ p2p init --server <server-name>
+  LONGDESC
+  option :server, :default => nil
+  def init
+    server = options[:server]
+    if server == nil
+      puts "\e[31mPlease provide a server ❌\e[0m"
+    end
+    P2PServersUtilities.new().save_to_p2p(server)
   end
 
   def Thor.exit_on_failure?

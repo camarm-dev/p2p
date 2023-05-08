@@ -1,8 +1,9 @@
 {
   "folder": "~/.p2p",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "webui": {
     "enabled": false,
     "port": "16216"
-  }
+  },
+  "changelog": "P2P V0.1.6 now includes `p2p init`, a command to easily create a .p2p file and changelog !"
 }
