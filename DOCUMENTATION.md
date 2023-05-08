@@ -27,8 +27,9 @@ The Cli is divided in two big parts:
 
 | [p2p](#p2p-commands)           | [p2p servers](#p2p-servers) |
 |--------------------------------|-----------------------------|
-| Execute a .p2p file.           | Manage servers              |
-| Give infos about installation. | Test server connectivity    |
+| Execute a .p2p file.           | Add / remove servers        |
+| Create a .p2p file.            | Check servers informations  |
+| Give infos about installation. | Test servers connectivity   |
 | Update p2p                     |                             |
 
 ### P2P commands
@@ -60,6 +61,20 @@ aliases: `-e, -p`
            -> root
 ```
 >Execute the .p2p file. 
+
+#### init
+
+arguments: `--server`, choose server to use (**required**)
+
+See also: [Write a deployment file](#write-a-deployment-file)
+
+ ```shell
+$~ p2p init --server rpi
+  Connecting to rpi... Type "close" to exit and "abort" to abort.
+  robert@192.168.1.167:/home/robert $ close
+  .p2p file successfully generated ✅
+```
+>Create a .p2p file by saving every command you type. 
 
 #### update
 
