@@ -34,7 +34,11 @@ The Cli is divided in two big parts:
 
 ### P2P commands
 
-#### info
+
+<details>
+
+<summary><b>info</b></summary>
+
 ```shell
 $~ p2p info
  Installed path: /usr/lib/p2p/cli/p2p.rb
@@ -42,7 +46,12 @@ $~ p2p info
 ```
 >Gives version and installation path.
 
-#### --exec, --push
+</details>
+
+
+<details>
+
+<summary><b>--exec, --push</b></summary>
 
 See also: [Write a deployment file](#write-a-deployment-file)
 
@@ -60,9 +69,14 @@ aliases: `-e, -p`
         - Executing `whoami`
            -> root
 ```
->Execute the .p2p file. 
+>Execute the .p2p file.
 
-#### init
+</details>
+
+
+<details>
+
+<summary><b>init</b></summary>
 
 arguments: `--server`, choose server to use (**required**)
 
@@ -74,9 +88,14 @@ $~ p2p init --server rpi
   robert@192.168.1.167:/home/robert $ close
   .p2p file successfully generated ✅
 ```
->Create a .p2p file by saving every command you type. 
+>Create a .p2p file by saving every command you type.
 
-#### update
+</details>
+
+
+<details>
+
+<summary><b>update</b></summary>
 
  ```shell
  $~ p2p update
@@ -85,10 +104,15 @@ $~ p2p init --server rpi
 ```
 >Install the lastest p2p version.
 
+</details>
+
 
 ### P2P servers
 
-#### add
+
+<details>
+
+<summary><b>add</b></summary>
 
 ```shell
  $~ p2p servers add
@@ -97,7 +121,12 @@ $~ p2p init --server rpi
 ```
 >Add a p2p server, by following a wizard
 
-#### list
+</details>
+
+
+<details>
+
+<summary><b>list</b></summary>
 
 ```shell
  $~ p2p servers list
@@ -108,8 +137,12 @@ planteqr        -       root@192.168.1.x
 ```
 >List p2p servers
 
+</details>
 
-#### remove <server>
+
+<details>
+
+<summary><b>remove <server></b></summary>
 
 ```shell
  $~ p2p servers remove pve
@@ -117,8 +150,12 @@ Server successfully deleted ✅
 ```
 >Remove p2p server named <server>
 
+</details>
 
-#### spec <server>
+
+<details>
+
+<summary><b>spec <server></b></summary>
 
 ```shell
  $~ p2p servers spec pve
@@ -131,8 +168,12 @@ name:              pve
 ```
 >Show specifications of p2p server named <server>
 
+</details>
 
-#### test <server>
+
+<details>
+
+<summary><b>test <server></b></summary>
 
 ```shell
  $~ p2p servers test pve
@@ -141,6 +182,7 @@ Server 'pve' has been tested successfully. ✅
 ```
 >Test the connectivity of the p2p server named <server>
 
+</details>
 
 
 ## Write a deployment file
