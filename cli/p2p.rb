@@ -43,7 +43,6 @@ class P2P < Thor
 
     > $ p2p update
   LONGDESC
-  option :file, :default => ".p2p"
   def update
     puts "Running installation command..."
     `curl https://raw.githubusercontent.com/camarm-dev/p2p/main/install.sh | sudo sh`
