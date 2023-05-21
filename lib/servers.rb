@@ -68,7 +68,7 @@ class P2PServersUtilities
         return Storage.read("servers")['data']
     end
 
-    def self.get(name)
+    def get(name)
         servers = Storage.read("servers")['data']
         servers.each do |server|
             if server['name'] == name
