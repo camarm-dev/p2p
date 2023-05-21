@@ -1,6 +1,6 @@
 {
   "folder": "~/.p2p",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "webui": {
     "enabled": false,
     "port": "16216"

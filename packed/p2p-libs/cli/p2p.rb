@@ -39,11 +39,10 @@ class P2P < Thor
 
   desc "update", "Update your current p2p installation."
   long_desc <<-LONGDESC
-    `p2p update` will try to download the lastest p2p version.
+    `p2p update` will try to download the latest p2p version (run this as root or don't forget to type your password when asked !).
 
     > $ p2p update
   LONGDESC
-  option :file, :default => ".p2p"
   def update
     puts "Running installation command..."
     `curl https://raw.githubusercontent.com/camarm-dev/p2p/main/install.sh | sudo sh`
