@@ -55,6 +55,7 @@ $~ p2p info
 
 See also: [Write a deployment file](#write-a-deployment-file)
 
+arguments: `--file`, choose the p2p file to execute (**optional**, **default**: .p2p)
 aliases: `-e, -p`
  ```shell
  $~ p2p -e
@@ -186,7 +187,7 @@ Server 'pve' has been tested successfully. ✅
 
 
 ## Write a deployment file
-P2P as his own "language" that is very similar to Docker.
+P2P has his own "language" that is very similar to Docker.
 
 It only have 4 instruction possible:
 
