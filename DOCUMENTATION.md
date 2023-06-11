@@ -56,6 +56,8 @@ $~ p2p info
 See also: [Write a deployment file](#write-a-deployment-file)
 
 arguments: `--file`, choose the p2p file to execute (**optional**, **default**: .p2p)
+
+
 aliases: `-e, -p`
  ```shell
  $~ p2p -e
