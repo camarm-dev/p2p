@@ -47,7 +47,7 @@ class P2P < Thor
     puts "Running installation command..."
     `curl https://raw.githubusercontent.com/camarm-dev/p2p/main/install.sh | sudo sh`
     puts "P2P successfully updated ! Execute p2p info to see installed version"
-    end
+  end
 
   desc "init", "Connect to a server and save commands as a p2p deployment."
   long_desc <<-LONGDESC
