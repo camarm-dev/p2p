@@ -5,5 +5,5 @@
     "enabled": false,
     "port": "16216"
   },
-  "changelog": "P2P V0.1.6 now includes `p2p init`, a command to easily create a .p2p file and changelog !"
+  "changelog": "P2P V0.1.7 Resolved bugs with p2p libs, and advice about p2p commands !"
 }
