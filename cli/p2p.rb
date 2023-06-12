@@ -51,7 +51,7 @@ class P2P < Thor
 
   desc "init", "Connect to a server and save commands as a p2p deployment."
   long_desc <<-LONGDESC
-    `p2p init` will try to download the lastest p2p version.
+    `p2p init` will try to download the latest p2p version.
 
     > $ p2p init --server <server-name>
   LONGDESC
