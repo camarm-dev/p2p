@@ -1,4 +1,4 @@
-# This script replace every './' in require statement by th PATH of every file of directory [dir] (first arg)
+# This script replace every './' in require statement by the PATH of every file of directory [dir] (first arg)
 
 PATH = '/usr/lib/p2p/'
 
