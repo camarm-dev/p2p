@@ -55,6 +55,8 @@ $~ p2p info
 
 <summary><b>--exec, --push</b></summary>
 
+#### Execute deployment
+
 See also: [Write a deployment file](#write-a-deployment-file)
 
 arguments: `--file`, choose the p2p file to execute (**optional**, **default**: .p2p)
@@ -63,15 +65,20 @@ arguments: `--file`, choose the p2p file to execute (**optional**, **default**: 
 aliases: `-e, -p`
  ```shell
  $~ p2p -e
- Connecting to rpi...
-        - Moving to /home/robert
-        - Copying examples/main.py
-        - Executing `python3 main.py`
-           -> Hello world
+Connecting to rpi ᯤ✔️
+  - Moving to /home/robert/Projects 📂✔️
+  - Executing `mkdir -p test` 💥✖️
+    -> Please note that P2P have problems with `mkdir` command 📂✖️
+  - Moving to test 📂✔️
+  - Executing `ls` 💥✔️
+   -> main.py
+  - Copying examples/main.py 📎✔️
+  - Executing `python3 mai.py` 💥✖️
+   -> python3: can't open file 'mai.py': [Errno 2] No such file or directory
 
- Connecting to pve...
-        - Moving to /root
-        - Executing `whoami`
+Connecting to pve ᯤ✔️
+        - Moving to /root 📂✔️
+        - Executing `whoami` 💥✔️
            -> root
 ```
 >Execute the .p2p file.
@@ -222,7 +229,7 @@ CTX /usr/backend
 COPY config.ini,backend.sh
 COMMAND sh backend.sh
 ```
-The example file above will output something like [this](#--exec---push).
+The example file above will output something like [this](#execute-deployment).
 
 This video explain line by line what the interpreter does:
 
