@@ -1,9 +1,5 @@
 {
   "folder": "~/.p2p",
-  "version": "0.1.7",
-  "webui": {
-    "enabled": false,
-    "port": "16216"
-  },
-  "changelog": "P2P V0.1.7 Resolved bugs with p2p libs, and advice about p2p commands !"
+  "version": "0.1.8",
+  "changelog": "P2P V0.1.8 New outputs with error handling !"
 }
