@@ -195,7 +195,7 @@ Server 'pve' has been tested successfully. ✅
 ## Write a deployment file
 P2P has his own "language" that is very similar to Docker.
 
-It only have 4 instruction possible:
+It only has 4 instruction possible:
 
 `DEST`:    The p2p server name to use as destination.
 
