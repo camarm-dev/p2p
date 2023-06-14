@@ -37,11 +37,12 @@ module P2PNet
             else
                 ssh = Net::SSH.start(@host, @user, port: @port)
             end
-            outputs = []
             commands.each do |command|
-                outputs << ssh.exec!(command)
+                ssh.exec(command) do |_, success|
+                    return false unless success
+                end
             end
-            return outputs
+            return true
         end
 
         def call(command)
@@ -50,7 +51,16 @@ module P2PNet
             else
                 ssh = Net::SSH.start(@host, @user, port: @port)
             end
-            return ssh.exec!(command)
+            out, success = '', false
+            ssh.exec!(command) do |_, stream, data|
+                out = data
+                if stream == :stderr
+                    success = false
+                else
+                    success = true
+                end
+            end
+            return out, success
         end
 
         def upload(files=[], context='~')
@@ -59,10 +69,16 @@ module P2PNet
             else
                 ssh = Net::SCP.start(@host, @user, port: @port)
             end
+            upload_success = true
             files.each do |file|
                 filename = file.split('/')[-1]
-                ssh.upload!(file, "#{context}/#{filename}")
+                ssh.upload!(file, "#{context}/#{filename}") do |_, success|
+                    unless success
+                        upload_success = false
+                    end
+                end
             end
+            abort "Failed to copy one or all files..." unless upload_success
         end
     end
 end
