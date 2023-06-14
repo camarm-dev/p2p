@@ -4,6 +4,7 @@ require './lib/storage/utils'
 require './lib/eval/eval'
 require './lib/servers'
 require './cli/servers'
+require './lib/ansi'
 
 CONFIG = Storage::read('config')
 
@@ -22,7 +23,7 @@ class P2P < Thor
   def exec
     Program.run(options[:file])
     current_directory = `pwd`.tr("\n", "")
-    puts "\e[2m#{current_directory} - p2p #{CONFIG["version"]}\e[0m"
+    puts "\e[2m#{current_directory} - p2p #{CONFIG["version"]}#{$RESET}"
   end
 
   map %w[version -v --version] => :info
@@ -60,13 +61,13 @@ class P2P < Thor
   def init
     server = options[:server]
     if server == nil
-      puts "\e[31mPlease provide a server ❌\e[0m"
+      puts "#{$RED}Please provide a server ❌#{$RESET}"
     end
     P2PServersUtilities.new().save_to_p2p(server)
   end
 
   def Thor.exit_on_failure?
-    puts "\e[31mFatal error ❌\e[0m"
+    puts "#{$RED}Fatal error ❌#{$RESET}"
     exit 1
   end
 

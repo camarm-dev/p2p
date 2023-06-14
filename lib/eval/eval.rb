@@ -10,7 +10,7 @@ module Program
     lines = content.split("\n")
 
     unless lines[0].start_with?("DIST")
-      puts "\e[31mFirst line must set the distant host with DIST keyword ! ❌\e[0m"
+      puts "#{$RED}First line must set the distant host with DIST keyword ! ❌#{$RESET}"
       exit
     end
 
@@ -19,12 +19,12 @@ module Program
     lines.each do |line|
       if line.start_with?("DIST")
         arg = line.gsub("DIST ", "")
-        puts "\e[1mConnecting to #{arg}...\e[0m"
+        puts "#{$BOLD}Connecting to #{arg}...#{$RESET}"
         server = SERVERS.get(arg)
         @host = P2PNet::Host.new(server['user'], server['hostname'], server['port'], server['require_password'])
         context, _ = @host.call('pwd')
         context = context.tr("\n", "")
-        puts "#{$CLEAR}\e[1mConnecting to #{arg}... ✅\e[0m"
+        puts "#{$CLEAR}#{$BOLD}Connecting to #{arg}... ✅#{$RESET}"
 
       elsif line.start_with?("COPY")
         args = line.gsub("COPY ", "").split(',')
@@ -45,7 +45,7 @@ module Program
         else
           puts "#{$CLEAR}#{$RED}\t- Executing `#{arg}` ❌#{$RESET}"
         end
-        puts "\t\e[2m   -> #{out}\e[0m"
+        puts "\t\e[2m   -> #{out}#{$RESET}"
 
       elsif line.start_with?("CTX")
         arg = line.gsub("CTX ", "")
@@ -65,7 +65,7 @@ module Program
         next
 
       else
-        puts "\e[33mUnknown command at line #{lines.find_index(line)}.\e[0m"
+        puts "\e[33mUnknown command at line #{lines.find_index(line)}.#{$RESET}"
       end
     end
   end
@@ -74,7 +74,7 @@ module Program
     begin
       eval(File.read(file))
     rescue
-      puts "\e[31mFile not found or error occurred ❌\e[0m"
+      puts "#{$RED}File not found or error occurred ❌#{$RESET}"
     end
   end
 
