@@ -39,10 +39,12 @@ The Cli is divided in two big parts:
 
 <summary><b>info</b></summary>
 
+aliases: `-v, --version, version`
 ```shell
 $~ p2p info
  Installed path: /usr/lib/p2p/cli/p2p.rb
  Version: 0.0.0
+ Changelog: P2P V0.1.6 now includes `p2p init`, a command to easily create a .p2p file and changelog !
 ```
 >Gives version and installation path.
 
