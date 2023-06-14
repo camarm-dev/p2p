@@ -49,7 +49,7 @@ module Program
         if arg.include?('mkdir')
           puts "#{$YELLOW}\t      -> Please note that P2P have problems with `mkdir` command 📂✖️#{$RESET}"
         else
-          puts "\t\e[2m   -> #{out}#{$RESET}" if out != ''
+          puts "\t#{$GREY}   -> #{out}#{$RESET}" if out != ''
         end
 
       elsif line.start_with?("CTX")

@@ -36,7 +36,7 @@ class Servers < Thor
       puts "#{server['name']}#{space}-\t#{server['user']}@#{server['hostname']}"
     end
 
-    puts "\e[2m#{servers.length} servers - p2p #{CONFIG["version"]}#{$RESET}"
+    puts "#{$GREY}#{servers.length} servers - p2p #{CONFIG["version"]}#{$RESET}"
 
   end
 
@@ -56,7 +56,7 @@ class Servers < Thor
 
     puts "#{$GREEN}Server successfully deleted ✅#{$RESET}"
 
-    puts "\e[2mserver '#{name}' - p2p #{CONFIG["version"]}#{$RESET}"
+    puts "#{$GREY}server '#{name}' - p2p #{CONFIG["version"]}#{$RESET}"
   end
 
   desc "spec [server-name]", "Get a p2p server spec."
@@ -79,7 +79,7 @@ class Servers < Thor
       puts "#{key}:  #{' ' * (@@max_key_len - key.length)}#{server[key]}"
     end
 
-    puts "\e[2mserver '#{name}' - p2p #{CONFIG["version"]}#{$RESET}"
+    puts "#{$GREY}server '#{name}' - p2p #{CONFIG["version"]}#{$RESET}"
   end
   
   desc "test [server-name]", "Test a p2p server connectivity."
@@ -108,6 +108,6 @@ class Servers < Thor
     end
 
 
-    puts "\e[2mserver '#{name}' - p2p #{CONFIG["version"]}#{$RESET}"
+    puts "#{$GREY}server '#{name}' - p2p #{CONFIG["version"]}#{$RESET}"
   end
 end
