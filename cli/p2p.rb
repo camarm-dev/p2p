@@ -25,6 +25,7 @@ class P2P < Thor
     puts "\e[2m#{current_directory} - p2p #{CONFIG["version"]}\e[0m"
   end
 
+  map %w[version -v --version] => :info
   desc "info", "Test your current p2p installation."
   long_desc <<-LONGDESC
     `p2p info` will print out informations about your current p2p installation.
