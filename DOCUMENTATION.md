@@ -109,7 +109,7 @@ arguments: `--version`, choose the p2p version to install (can be both of downgr
  [...]
  P2P successfully updated ! Execute p2p info to see installed version
 ```
->Install the lastest p2p version.
+>Install the latest p2p version.
 
 </details>
 
