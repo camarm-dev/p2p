@@ -102,6 +102,8 @@ $~ p2p init --server rpi
 
 <summary><b>update</b></summary>
 
+arguments: `--version`, choose the p2p version to install (can be both of downgrade or upgrade) (**optional**, **default**: latest)
+
  ```shell
  $~ p2p update
  [...]
