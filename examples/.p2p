@@ -1,8 +1,11 @@
 DIST rpi
 # Set distant host
 CTX /home/robert/Projects
+COMMAND mkdir -p test
+CTX test
+COMMAND ls
 # Moving to /home/robert folder
-COPY examples/mai.py
+COPY examples/main.py
 # Copy a python file
 COMMAND python3 mai.py
 # Execute the python file thru the shell
