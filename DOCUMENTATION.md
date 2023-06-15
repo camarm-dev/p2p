@@ -1,5 +1,11 @@
+<p align="center">
+
+<img width="1000" src=".github/documentation.png" alt="P2P documentation">
+
 # Push to prod - Documentation
 Push 2 prod: the easiest and modern way to push any apps to production in one command.
+
+</p>
 
 ## Table of content
 - [Install](#installation)

@@ -1,10 +1,9 @@
 <div align="center">
 
-<img src="https://github.com/camarm-dev/p2p/blob/main/.github/logo.png?raw=true">
+<img width="1000" src=".github/header.png" alt="Push 2 Prod">
 
 # Push to prod
 Push 2 prod: the easiest and modern way to push any apps to production in one command.
-
 
 </div>
 
