@@ -1,0 +1,8 @@
+$GREY = "\e[2m"
+$RED = "\e[31m"
+$GREEN = "\e[32m"
+$YELLOW = "\e[33m"
+$RESET = "\e[0m"
+$BOLD = "\e[1m"
+$UNDERLINE = "\e[4m"
+$CLEAR = "\e[A\e[K"
