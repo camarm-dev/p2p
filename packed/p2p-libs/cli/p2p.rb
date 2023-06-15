@@ -67,7 +67,8 @@ class P2P < Thor
     puts "#{$YELLOW}-> Target commit #{$UNDERLINE}#{commit}#{$RESET}"
     puts "#{$YELLOW}-> Downloading gzip & install...#{$RESET}#{$GREY}"
     file_url = JSON.parse(Net::HTTP.get_response(URI("https://api.github.com/repos/camarm-dev/p2p/contents/packed/p2p-libs.tar.gz?ref=#{commit}")).body)['download_url']
-    `curl #{file_url} -s -o libs.tar.gz && curl https://raw.githubusercontent.com/camarm-dev/p2p/main/config.default.json -s -o ~/.p2p/config.json && curl -s https://raw.githubusercontent.com/camarm-dev/p2p/main/install-tarball.sh | sudo sh`
+    config_url = JSON.parse(Net::HTTP.get_response(URI("https://api.github.com/repos/camarm-dev/p2p/contents/config.default.json?ref=#{commit}")).body)['download_url']
+    `curl #{file_url} -s -o libs.tar.gz && curl #{config_url} -s -o ~/.p2p/config.json && curl -s https://raw.githubusercontent.com/camarm-dev/p2p/main/install-tarball.sh | sudo sh`
     puts "#{$RESET}P2P successfully updated ! Execute p2p info to see installed version"
   end
 
