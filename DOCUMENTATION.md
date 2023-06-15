@@ -258,10 +258,21 @@ sh scripts/config.sh
 
 ### Folders
 `lib/` -> The p2p libraries, to use ssh or to store datas...
+  - `ansi.rb` -> Ansi code constants used for terminal outputs
+  - `servers.rb` -> Servers management class (remove, test, get...)
+  - `storage/utils.rb` -> Store & read p2p data (manage json files in `~/.p2p`)
+  - `net/utils.rb` -> Wrapper of ruby net-ssh & net-scp, for p2p
+  - `eval/eval.rb` -> Execute p2p code
 
 `cli/` -> The thor cli classes.
+  - `p2p.rb` -> Main file and Class for [p2p utilities](#p2p-commands)
+  - `servers.rb` -> Class for [p2p servers cli](#p2p-servers)
 
 `scripts/` -> Useful script to build of configure p2p
+  - `config.sh` -> Fetch and write default `config.default.json` file as `~/.p2p/config.json`
+  - `pack.sh` -> [Pack](#pack)
+  - `install-packed.sh` -> Install the latest local "pack" (in folder packed/) in `/usr/lib/p2p`
+  - `utils/full-path.rb` -> Replace ruby import relative path to absolute path (eg replace in folder test: `ruby full-path.rb test/`)
 
 ### Pack
 Pack p2p is simply moving all ressources to the folder `packed/` and prepare them to be installed.
