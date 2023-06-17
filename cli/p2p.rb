@@ -83,6 +83,7 @@ class P2P < Thor
     server = options[:server]
     if server == nil
       puts "#{$RED}Please provide a server ❌#{$RESET}"
+      abort
     end
     P2PServersUtilities.new().save_to_p2p(server)
   end
