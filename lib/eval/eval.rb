@@ -49,13 +49,13 @@ module Program
         puts "\t- Executing `#{arg}` 💥..."
         out, success = @host.call("cd #{context} && #{arg}")
         out = out.gsub("\n", "\n\t      ")
-        if success
+        if success or arg.include?('mkdir') and out == ""
           puts "#{$CLEAR}#{$GREEN}\t- Executing `#{arg}` 💥✔️#{$RESET}"
         else
           puts "#{$CLEAR}#{$RED}\t- Executing `#{arg}` 💥✖️#{$RESET}"
         end
-        if arg.include?('mkdir')
-          puts "#{$YELLOW}\t      -> Please note that P2P have problems with `mkdir` command 📂✖️#{$RESET}"
+        if arg.include?('mkdir') and out == ""
+          puts "#{$YELLOW}\t      -> Your `mkdir` command have probably been executed successfully but p2p is unable to receive output 📂✔️#{$RESET}"
         else
           puts "\t#{$GREY}   -> #{out}#{$RESET}" if out != ''
         end
