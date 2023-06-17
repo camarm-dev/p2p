@@ -13,6 +13,7 @@ module P2PNet
             @conn = nil
             if password
                 @password = IO::console.getpass "#{user}@#{hostname} password: "
+                p "#{$CLEAR}"
             end
         end
 
