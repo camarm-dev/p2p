@@ -1,5 +1,5 @@
 {
   "folder": "~/.p2p",
-  "version": "0.2.1",
-  "changelog": "P2P V0.2.1 Resolved bugs around hosts utilities."
+  "version": "0.2.2",
+  "changelog": "P2P V0.2.2 Bugs resolution with password asking & outputs."
 }

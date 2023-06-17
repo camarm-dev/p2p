@@ -21,10 +21,18 @@ module Program
         arg = line.gsub("DIST ", "")
         puts "#{$BOLD}Connecting to #{arg} ᯤ...#{$RESET}"
         server = SERVERS.get(arg)
-        @host = P2PNet::Host.new(server['user'], server['hostname'], server['port'], server['require_password'])
-        context, _ = @host.call('pwd')
-        context = context.tr("\n", "")
-        puts "#{$CLEAR}#{$BOLD}Connecting to #{arg} ᯤ✔️#{$RESET}"
+        special_output = ""
+        if server['require_password']
+          special_output = "#{$CLEAR}"
+        end
+        begin
+          @host = P2PNet::Host.new(server['user'], server['hostname'], server['port'], server['require_password'])
+          context, _ = @host.call('pwd')
+          context = context.tr("\n", "")
+          puts "#{$CLEAR}#{special_output}#{$BOLD}Connecting to #{arg} ᯤ✔️#{$RESET}"
+        rescue
+          puts "#{$CLEAR}#{special_output}#{$RED}Connecting to #{arg} ᯤ✖️#{$RESET}"
+        end
 
       elsif line.start_with?("COPY")
         args = line.gsub("COPY ", "").split(',')
@@ -40,7 +48,7 @@ module Program
         arg = line.gsub("COMMAND ", "")
         puts "\t- Executing `#{arg}` 💥..."
         out, success = @host.call("cd #{context} && #{arg}")
-        out = out.tr("\n", "\n\t     ")
+        out = out.gsub("\n", "\n\t      ")
         if success
           puts "#{$CLEAR}#{$GREEN}\t- Executing `#{arg}` 💥✔️#{$RESET}"
         else
