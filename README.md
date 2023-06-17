@@ -15,7 +15,7 @@ Push 2 prod: the easiest and modern way to push any apps to production in one co
 
 ## What does p2p ?
 P2p is a command line tool written in ruby that push any apps to production with a single configuration file and in one command.
-It uses ssh and don't required any agent on the distant machine.
+It uses ssh and don't require any agent on the distant machine.
 
 1. Add the distant machine using p2p and give it a name.
 2. Write a config file named `.p2p` at your project root.
