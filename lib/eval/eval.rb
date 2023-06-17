@@ -40,7 +40,7 @@ module Program
         arg = line.gsub("COMMAND ", "")
         puts "\t- Executing `#{arg}` 💥..."
         out, success = @host.call("cd #{context} && #{arg}")
-        out = out.tr("\n", "\n\t     ")
+        out = out.gsub("\n", "\n\t      ")
         if success
           puts "#{$CLEAR}#{$GREEN}\t- Executing `#{arg}` 💥✔️#{$RESET}"
         else
