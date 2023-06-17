@@ -108,9 +108,9 @@ class P2PServersUtilities
         puts "Connecting to #{name}... Type \"close\" to exit and \"abort\" to abort."
         host = P2PNet::Host.new(server['user'], server['hostname'], server['port'], server['require_password'])
         commands = ["DIST #{name}"]
-        context, _ = host.call('pwd').tr("\n", "")
+        context, _ = host.call('pwd')[0].tr("\n", "")
         while true
-            user, _ = host.call('whoami').tr("\n", "")
+            user, _ = host.call('whoami')[0].tr("\n", "")
             print "#{$GREEN}#{user}@#{server['hostname']}#{$RESET}:\e[34m#{context} $#{$RESET} "
             command = $stdin.gets.tr("\n", "")
             if command == 'close'
@@ -133,7 +133,7 @@ class P2PServersUtilities
                 puts "#{$GREY}\t-> Translating \"cd\" to \"CTX\"; moved to #{target}#{$RESET}"
             else
                 commands.push("COMMAND #{command}")
-                output, _ = host.call("cd #{context} && #{command}").gsub("\n", "\n\t   ")
+                output, _ = host.call("cd #{context} && #{command}")[0].gsub("\n", "\n\t   ")
                 puts "#{$GREY}\t-> #{output}#{$RESET}"
             end
         end
