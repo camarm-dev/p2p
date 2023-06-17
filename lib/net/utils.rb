@@ -12,15 +12,18 @@ module P2PNet
             @required_password = password
             @conn = nil
             if password
-                @password = IO::console.getpass "#{user}@#{hostname} password: "
-                p "#{$CLEAR}"
+                @password = IO::console.getpass "#{user}@#{hostname}'s password: "
+                puts "#{$CLEAR}"
+                unless test
+                    abort "Failed to connect to target host !"
+                end
             end
         end
 
         def test
             if Net::Ping::External.new(@host).ping
                 if @required_password
-                    Net::SSH.start(@host, @user, port: @port, password: @password) do |ssh| 
+                    Net::SSH.start(@host, @user, port: @port, password: @password, non_interactive: true) do |ssh|
                         ssh.exec!("whoami")
                     end
                 else
@@ -34,7 +37,7 @@ module P2PNet
 
         def exec(commands=[])
             if @required_password
-                ssh = Net::SSH.start(@host, @user, port: @port, password: @password)
+                ssh = Net::SSH.start(@host, @user, port: @port, password: @password, non_interactive: true)
             else
                 ssh = Net::SSH.start(@host, @user, port: @port)
             end
@@ -48,7 +51,7 @@ module P2PNet
 
         def call(command)
             if @required_password
-                ssh = Net::SSH.start(@host, @user, port: @port, password: @password)
+                ssh = Net::SSH.start(@host, @user, port: @port, password: @password, non_interactive: true)
             else
                 ssh = Net::SSH.start(@host, @user, port: @port)
             end
@@ -66,7 +69,7 @@ module P2PNet
 
         def upload(files=[], context='~')
             if @required_password
-                ssh = Net::SCP.start(@host, @user, port: @port, password: @password)
+                ssh = Net::SCP.start(@host, @user, port: @port, password: @password, non_interactive: true)
             else
                 ssh = Net::SCP.start(@host, @user, port: @port)
             end
