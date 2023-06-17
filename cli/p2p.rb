@@ -4,6 +4,7 @@ require './lib/storage/utils'
 require './lib/eval/eval'
 require './lib/servers'
 require './cli/servers'
+require './cli/settings'
 require './lib/ansi'
 require 'uri'
 require 'net/http'
@@ -93,8 +94,10 @@ class P2P < Thor
     exit 1
   end
 
-  desc "servers", "P2p servers utilities"
+  desc "servers", "P2P servers utilities"
   subcommand 'servers', Servers
+  desc "settings", "P2P settings"
+  subcommand '!', Settings
 end
 
 P2P.start(ARGV)

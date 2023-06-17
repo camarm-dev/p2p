@@ -12,6 +12,8 @@ Push 2 prod: the easiest and modern way to push any apps to production in one co
 - [Commands](#commands)
   - [Utilities](#p2p-commands)
   - [Servers](#p2p-servers)
+  - [Settings](#p2p-settings--p2p--)
+- [Settings](#settings)
 - [Write a deployment file](#write-a-deployment-file)
 - [Develop on p2p](#develop-on-p2p)
 
@@ -29,14 +31,14 @@ curl https://raw.githubusercontent.com/camarm-dev/p2p/main/install.sh | sudo sh
 
 ## Commands
 
-The Cli is divided in two big parts:
+The Cli is divided in three big parts:
 
-| [p2p](#p2p-commands)           | [p2p servers](#p2p-servers) |
-|--------------------------------|-----------------------------|
-| Execute a .p2p file.           | Add / remove servers        |
-| Create a .p2p file.            | Check servers informations  |
-| Give infos about installation. | Test servers connectivity   |
-| Update p2p                     |                             |
+| [p2p](#p2p-commands)           | [p2p servers](#p2p-servers) | [p2p !](#p2p-settings--p2p--) |
+|--------------------------------|-----------------------------|-------------------------------|
+| Execute a .p2p file.           | Add / remove servers        | Edit settings                 |
+| Create a .p2p file.            | Check servers informations  | List settings                 |
+| Give infos about installation. | Test servers connectivity   |                               |
+| Update p2p                     |                             |                               |
 
 ### P2P commands
 
@@ -162,7 +164,7 @@ planteqr        -       root@192.168.1.x
 
 <details>
 
-<summary><b>remove <server></b></summary>
+<summary><b>remove [server]</b></summary>
 
 ```shell
  $~ p2p servers remove pve
@@ -175,7 +177,7 @@ Server successfully deleted ✅
 
 <details>
 
-<summary><b>spec <server></b></summary>
+<summary><b>spec [server]</b></summary>
 
 ```shell
  $~ p2p servers spec pve
@@ -193,7 +195,7 @@ name:              pve
 
 <details>
 
-<summary><b>test <server></b></summary>
+<summary><b>test [server]</b></summary>
 
 ```shell
  $~ p2p servers test pve
@@ -204,6 +206,42 @@ Server 'pve' has been tested successfully. ✅
 
 </details>
 
+
+### P2P settings (p2p !)
+
+
+<details>
+
+<summary><b>set [setting] [value]</b></summary>
+
+```shell
+ $~ p2p ! set emojis fancy
+  Successfully set 'emojis' to 'fancy' 📂✔️
+```
+>Set `key` setting to value
+
+</details>
+
+
+<details>
+
+<summary><b>list</b></summary>
+
+```shell
+ $~ p2p ! list
+Settings 📃️
+data:    []
+emojis:  fancy
+```
+>List p2p settings
+
+</details>
+
+## Settings
+Settings are updatable with `p2p ! set [setting] [value]`
+The list of avaible settings and their possible values is above:
+- `emojis` = `fancy` | `classic` 
+  - > Fancy will show emojis that require a special font, classic will ensure you that output will never print bugged chars.
 
 ## Write a deployment file
 P2P has his own "language" that is very similar to Docker.

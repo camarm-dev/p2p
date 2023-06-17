@@ -29,7 +29,7 @@ class Servers < Thor
   def list
     servers = SERVERS.list
 
-    puts "#{$BOLD}Registered servers 🌐#{$RESET}"
+    puts "#{$BOLD}Registered servers #{$WORLD}#{$RESET}"
 
     servers.each do |server|
       space = ' ' * (@@max_key_len - server['name'].length)
@@ -68,7 +68,7 @@ class Servers < Thor
   def spec(name)
     server = SERVERS.get(name)
 
-    puts "#{$BOLD}Specs of '#{name}' 📃️#{$RESET}"
+    puts "#{$BOLD}Specs of '#{name}' #{$PAPER}#{$RESET}"
 
     if server == nil
       puts "#{$RED}Cannot find server '#{name}' ❌#{$RESET}"
@@ -91,7 +91,7 @@ class Servers < Thor
   def test(name)
     server = SERVERS.get(name)
 
-    puts "#{$BOLD}Testing server '#{name}'ᯤ...#{$RESET}"
+    puts "#{$BOLD}Testing server '#{name}'#{$CON}...#{$RESET}"
 
     if server == nil
       puts "#{$RED}Cannot find server '#{name}' ❌#{$RESET}"
@@ -101,10 +101,10 @@ class Servers < Thor
     begin
       host = P2PNet::Host.new(server['user'], server['hostname'], server['port'], server['require_password'])
       if host.test
-        puts "#{$CLEAR}#{$GREEN}Testing server '#{name}' ᯤ✔️#{$RESET}"
+        puts "#{$CLEAR}#{$GREEN}Testing server '#{name}' #{$CON_S}#{$RESET}"
       end
     rescue
-      puts "#{$RED}Testing server '#{name}' ✖ᯤ️#{$RESET}"
+      puts "#{$RED}Testing server '#{name}' #{$CON_F}️#{$RESET}"
     end
 
 
