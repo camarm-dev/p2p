@@ -242,6 +242,8 @@ Settings are updatable with `p2p ! set [setting] [value]`
 The list of avaible settings and their possible values is above:
 - `emojis` = `fancy` | `classic` 
   - > Fancy will show emojis that require a special font, classic will ensure you that output will never print bugged chars.
+- `color` = `yes` | `no` 
+  - > Yes will enable ANSI color outputs, no will disable colored outputs.
 
 ## Write a deployment file
 P2P has his own "language" that is very similar to Docker.

@@ -10,14 +10,34 @@ else
   Storage::write(SETTINGS, 'settings')
 end
 
-$GREY = "\e[2m"
-$RED = "\e[31m"
-$GREEN = "\e[32m"
-$YELLOW = "\e[33m"
-$RESET = "\e[0m"
-$BOLD = "\e[1m"
-$UNDERLINE = "\e[4m"
-$CLEAR = "\e[A\e[K"
+
+if SETTINGS.key?('color')
+  COLOR = SETTINGS['color']
+else
+  COLOR = 'yes'
+  SETTINGS['color'] = COLOR
+  Storage::write(SETTINGS, 'settings')
+end
+
+if COLOR.downcase == 'yes'
+  $GREY = "\e[2m"
+  $RED = "\e[31m"
+  $GREEN = "\e[32m"
+  $YELLOW = "\e[33m"
+  $RESET = "\e[0m"
+  $BOLD = "\e[1m"
+  $UNDERLINE = "\e[4m"
+  $CLEAR = "\e[A\e[K"
+else
+  $GREY = ""
+  $RED = ""
+  $GREEN = ""
+  $YELLOW = ""
+  $RESET = ""
+  $BOLD = ""
+  $UNDERLINE = ""
+  $CLEAR = ""
+end
 
 # Next constants define emojis for each configuration type. Their named like CONnection / CONnectionSucess / CONnectionFail : CON / CON_S / CON_F or 4 letter (CLIP)
 
