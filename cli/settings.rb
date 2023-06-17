@@ -18,6 +18,7 @@ class Settings < Thor
     SETTINGS[key] = value
     Storage::write(SETTINGS, 'settings')
     puts "#{$GREEN}Successfully set '#{key}' to '#{value}' #{$DIR_S}#{$RESET}"
+
     puts "#{$GREY}settings - p2p #{CONFIG["version"]}#{$RESET}"
   end
 
@@ -32,6 +33,8 @@ class Settings < Thor
     SETTINGS.keys.each do |key|
       puts "#{key}:  #{' ' * (@@max_key_len - key.length)}#{SETTINGS[key]}"
     end
+
+    puts "#{$GREY}settings - p2p #{CONFIG["version"]}#{$RESET}"
   end
   
 end
