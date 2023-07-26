@@ -2,7 +2,6 @@ require 'thor'
 require './lib/storage/utils'
 require './lib/ansi'
 
-SETTINGS = Storage::read('settings')
 
 class Settings < Thor
   class_option :verbose, :type => :boolean, :aliases => "-v", :default => false
