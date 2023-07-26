@@ -105,6 +105,10 @@ class P2PServersUtilities
 
     def save_to_p2p(name)
         server = P2PServersUtilities.get(name)
+        if server == nil
+            puts "\n#{$RED}P2P server '#{name}' not found ❌#{$RESET}"
+            return
+        end
         puts "Connecting to #{name}... Type \"close\" to exit and \"abort\" to abort."
         host = P2PNet::Host.new(server['user'], server['hostname'], server['port'], server['require_password'])
         commands = ["DIST #{name}"]

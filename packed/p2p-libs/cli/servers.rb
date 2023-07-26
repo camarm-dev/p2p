@@ -3,7 +3,6 @@ require '/usr/lib/p2p/lib/servers'
 require '/usr/lib/p2p/lib/net/utils'
 require '/usr/lib/p2p/lib/ansi'
 
-SERVERS = P2PServersUtilities.new()
 
 class Servers < Thor
   class_option :verbose, :type => :boolean, :aliases => "-v", :default => false
