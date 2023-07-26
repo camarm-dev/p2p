@@ -77,7 +77,7 @@ class P2P < Thor
 
     > $ p2p init --server <server-name>
   LONGDESC
-  option :server, :default => nil
+  option :server, :default => nil, :aliases => "-s"
   def init
     server = options[:server]
     if server == nil
