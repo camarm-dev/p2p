@@ -1,4 +1,3 @@
-$VERBOSE = nil
 require 'thor'
 require './lib/storage/utils'
 require './lib/eval/eval'
@@ -12,7 +11,6 @@ require 'net/http'
 CONFIG = Storage::read('config')
 
 class P2P < Thor
-  class_option :verbose, :type => :boolean, :aliases => "-v"
   desc "P2P Cli", "The easiest way to push to production any application in one command !"
 
   map %w[--exec -e --push -p] => :exec
