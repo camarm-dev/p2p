@@ -7,6 +7,8 @@ Push 2 prod: the easiest and modern way to push any apps to production in one co
 
 </div>
 
+> We are actually working on a new p2p feature: "service". A new keyword that runs a daemonized command ! See [features/service]() branch. 
+
 ## Table of content
 - [What does p2p ?](#what-does-p2p-)
 - [Install](#installation)
